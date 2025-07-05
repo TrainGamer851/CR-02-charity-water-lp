@@ -7,17 +7,27 @@
   --black: #1A1A1A;
 }
 
-.highlight-blue, .accent {
-  color: var(--blue);
-  font-weight: 700;
-}
-
 body {
   margin: 0;
-  font-family: 'Proxima Nova', 'Avenir', 'Montserrat', sans-serif;
-  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--cream);
-  font-weight: 400;
+  color: var(--black);
+}
+
+img {
+  transition: all 0.3s ease;
+}
+
+img:not(.hero-img):hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+
+/* Typography */
+.highlight-blue,
+.accent {
+  color: var(--blue);
+  font-weight: 700;
 }
 
 /* Navbar */
@@ -25,37 +35,21 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
   padding: 0 2rem;
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  height: 64px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 .logo {
-  height: 350%;
-  max-height: 350%;
+  height: 48px;
   width: auto;
 }
 
-@media (max-width: 768px) {
-  .navbar {
-    height: 64px;
-  }
-  .logo {
-    height: auto;
-    max-height: 350%;
-  }
-}
-
 .menu-icon {
   font-size: 1.5rem;
   cursor: pointer;
-}
-
-.menu-icon {
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  transition: transform 0.3s ease;
 }
 
 .menu-icon:hover,
@@ -63,178 +57,137 @@ body {
   transform: scale(1.2) rotate(15deg);
 }
 
-/* Hero */
+/* Hero Section */
 .hero {
-  width: 100%; /* Always take full width of the screen */
-  height: auto; /* Height adjusts automatically */
-  min-height: 200px; /* Minimum height for small screens */
-  max-width: 100vw; /* Prevents overflow */
-  background: none; /* Remove background image from the container */
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
+  width: 100%;
   overflow: hidden;
-  padding: 0;
 }
 
 .hero-img {
-  width: 100%; /* Image fills the width */
-  height: auto; /* Height adjusts to keep aspect ratio */
+  width: 100%;
+  height: auto;
   display: block;
-  object-fit: cover; /* Ensures image covers the area nicely */
-  min-height: 200px;
-  max-height: 80vh; /* Prevents image from being too tall */
+  object-fit: cover;
+  max-height: 80vh;
 }
 
-/* HERO SECTION - Keep text box on right, never cover the girl in the image */
-
-/* On large screens, keep the text box on the right and limit its width */
 .hero-content {
+  align-self: right;
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: flex-end; /* Keep text box on the right */
-  padding: 0 4vw 0 0; /* Remove left padding so box stays right */
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  pointer-events: none; /* So only the box is clickable */
+  padding: 0 1.5vw; /* tighter to the right wall */
 }
 
-/* The text box stays on the right and never gets too wide */
 .text-box {
-  pointer-events: auto;
   background: rgba(255,255,255,0.93);
+  padding: 1.5rem;
   border-radius: 18px;
-  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.10);
-  padding: 2rem 2.5rem;
-  box-sizing: border-box;
-  max-width: 340px;   /* Limit width so it doesn't cover the girl */
-  min-width: 160px;
-  margin: 2vw 2vw 2vw 0; /* Add margin to keep away from edge */
-  display: flex;
-  flex-direction: column;
-  gap: 1.15rem;
-  max-height: 85vh;
-  width: 100%;
+  width: 28vw;
+  min-width: 250px;
+  max-width: 340px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* On medium screens, make the box and text a bit smaller */
-@media (max-width: 1100px) {
-  .text-box {
-    max-width: 270px; /* Shrink the box on smaller screens */
-    padding: 1.2rem 1rem;
-    margin: 2vw 1vw 2vw 0;
-  }
-  .text-box h1 {
-    font-size: 1.3rem; /* Make headline smaller */
-  }
-  .text-box p {
-    font-size: 0.98rem; /* Make paragraph text smaller */
-  }
+/* Typography scaling */
+.text-box h1 {
+  font-size: clamp(1.2rem, 2.3vw, 2rem);
+  line-height: 1.3;
 }
 
-/* On tablets and phones, move the box to the bottom and make it wider, but not full width */
-@media (max-width: 900px) {
+.text-box p {
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .text-box {
+    width: 38vw;
+    padding: 1rem;
+  }
+
   .hero-content {
-    justify-content: center;
-    align-items: flex-end;
-    padding: 0 2vw 6vw 2vw;
-  }
-  .text-box {
-    max-width: 420px;  /* Set a reasonable max width for tablets and large phones */
-    width: 90vw;       /* Let it grow, but not to full width */
-    min-width: 0;
-    margin: 0 auto 2vw auto; /* Center the box horizontally at the bottom */
-    border-radius: 10px;
-    padding: 1rem 0.5rem;
-  }
-  .text-box h1 {
-    font-size: 1.1rem; /* Make headline even smaller */
-  }
-  .text-box p {
-    font-size: 0.9rem; /* Make paragraph text even smaller */
+    padding: 0 2vw;
   }
 }
 
-/* On small phones, make the box and text even smaller */
-@media (max-width: 700px) {
-  .text-box {
-    max-width: 320px;  /* Smaller max width for small phones */
-    width: 95vw;       /* Still not full width */
-    padding: 0.8rem 0.3rem;
-    border-radius: 8px;
-  }
-  .text-box h1 {
-    font-size: 1rem; /* Smaller headline */
-  }
-  .text-box p {
-    font-size: 0.85rem; /* Smaller paragraph text */
-  }
-}
-
-/* On very small screens, make the box and text almost full width and smallest */
 @media (max-width: 500px) {
   .text-box {
-    max-width: 99vw;  /* Only on the smallest screens allow almost full width */
-    width: 99vw;
-    padding: 0.7rem 0.2rem;
-    border-radius: 6px;
-  }
-  .text-box h1 {
-    font-size: 0.95rem; /* Smallest headline */
-  }
-  .text-box p {
-    font-size: 0.75rem; /* Smallest paragraph text */
-  }
-}
-
-@media (max-width: 300px) {
-  .text-box {
-    max-width: 90vw;  /* Only on the smallest screens allow almost full width */
     width: 90vw;
-    padding: 0.6rem 0.1rem;
-    border-radius: 4px;
+    padding: 0.75rem;
+    border-radius: 12px;
   }
+
   .text-box h1 {
-    font-size: 0.85rem; /* Smallest headline */
+    font-size: 1rem;
+    max-width: 300px;
   }
+
   .text-box p {
-    font-size: 0.65rem; /* Smallest paragraph text */
+    font-size: 0.85rem;
+    max-width: 300px;
+  }
+
+  .hero-content {
+    justify-content: center; /* center it if it would otherwise cover her face */
   }
 }
 
-/* Add a simple hover effect for the hero-content box */
-/* When you move your mouse over the hero-content area, the box will gently scale up and add a shadow */
+@media (max-width: 600px) {
+  .hero-content {
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 1rem 2rem 1rem; /* Less right padding */
+  }
+
+  .text-box {
+    width: 85vw;
+    max-width: none;
+    background: rgba(255, 255, 255, 0.96);
+    padding: 1rem;
+    border-radius: 12px;
+    text-align: left;
+  }
+
+  .text-box h1 {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .text-box p {
+    font-size: 0.7rem;
+    line-height: 1.5;
+  }
+
+  .cta-button {
+    font-size: 0.75rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
 
 .hero-content:hover .text-box {
-  /* Make the white box a little bigger and add a stronger shadow */
   transform: scale(1.03);
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
 
 /* Story Section */
 .story {
   padding: 4rem 2rem;
-  background-color: #fff;
-  margin-top: 0;
+  background: #fff;
 }
 
 .story-wrapper {
   display: flex;
-  gap: 2rem;
   flex-wrap: wrap;
-  align-items: center;
+  gap: 2rem;
   max-width: 1000px;
   margin: 0 auto;
+  align-items: center;
 }
 
 .story img {
@@ -256,160 +209,157 @@ body {
 /* CTA Section */
 .cta {
   background-color: var(--yellow);
-  text-align: center;
-  padding: 3rem 1rem;
+  padding: 4rem 2rem;
 }
 
-.cta h2 {
+.cta-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.cta-text {
+  flex: 1;
+  text-align: left;
+  max-width: 500px;
+}
+
+.cta-text h2 {
   font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-.cta p {
-  margin-top: 0.5rem;
+.cta-text p {
   font-size: 1.1rem;
-}
-
-/* Keep CTA text from being too wide and center it */
-.cta-text {
-  max-width: 420px;    /* Make the text box not too wide for easy reading */
-  margin: 0 auto;      /* Center the text box */
-  text-align: center;  /* Center the text inside */
-}
-
-/* CTA Button */
-.cta-button.dark,
-.cta-button.light {
-  display: inline-block;
-  background-color: #1A1A1A;
-  color: #FFC907;
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-  cursor: pointer;
-  /* Add a smooth transition for background, color, and transform */
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
-}
-
-/* Add a fun effect when hovering or focusing the button */
-.cta-button.dark:hover,
-.cta-button.dark:focus,
-.cta-button.light:hover,
-.cta-button.light:focus {
-  background-color: #1A1A1A; /* Change background color */
-  color: #77A8BB;            /* Change text color */
-  transform: scale(1.08) rotate(-2deg); /* Make the button pop and tilt a bit */
-}
-
-/* CTA Section layout: text on left, image on right */
-.cta-flex {
-  display: flex;              /* Put text and image side by side */
-  align-items: center;        /* Center items vertically */
-  justify-content: center;    /* Center the group horizontally */
-  gap: 1rem;                  /* Space between text and image */
-  max-width: 700px;           /* Keep the section from getting too wide */
-  margin: 0 auto;             /* Center the whole section */
-}
-
-/* CTA text styles */
-.cta-text {
-  max-width: 350px;           /* Limit text width for easy reading */
-  text-align: center;         /* Center the text */
-}
-
-/* CTA image styles for side-by-side layout */
-.cta-img-wrapper {
-  max-width: 1100px;   /* Reasonable image size for desktop */
-  width: auto;
-  margin-left: 1rem;  /* Add space between text and image */
+  margin-bottom: 1.5rem;
 }
 
 .cta-img {
-  width: 150%;        /* Image fills its box */
-  height: auto;       /* Keep aspect ratio */
-  border-radius: 10px;/* Rounded corners */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* On small screens, stack text and image vertically and make image wider */
-@media (max-width: 900px) {
-  .cta-flex {
-    flex-direction: column;   /* Stack items vertically */
-    gap: 1rem;
-    align-items: center;      /* Center items */
-  }
-  .cta-img-wrapper {
-    max-width: 100vw;          /* Image can be up to 70% of screen width */
-    margin: 1rem auto 0 auto; /* Center image and add space above */
-  }
-  .cta-img {
-    width: 100%;
-    max-width: 300px;         /* Prevent image from getting too big */
-    margin: 0 auto;
-  }
+/* CTA Button */
+.cta-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
-/* On very small screens, make image even more responsive */
-@media (max-width: 500px) {
-  .cta-img-wrapper {
-    max-width: 90vw;
-  }
-  .cta-img {
-    max-width: 90vw;
-  }
+.cta-button.dark {
+  background-color: #1A1A1A;
+  color: var(--yellow);
 }
 
-/* Responsive for story and CTA */
-@media (max-width: 768px) {
-  .story-wrapper {
-    flex-direction: column; /* Stack items vertically */
-    align-items: center;    /* Center items */
-  }
-  .story img {
-    max-width: 90vw;        /* Make image fit smaller screens */
-  }
-  .story-text {
-    text-align: center;     /* Center text for better look */
-  }
-  .cta-button {
-    font-size: 0.9rem;
-    padding: 0.75rem 1.5rem;
-  }
+.cta-button.light {
+  background-color: #1A1A1A;
+  color: var(--yellow);
 }
 
-/* Footer styles */
-/* This styles the footer at the bottom of the page */
+.cta-button:hover,
+.cta-button:focus {
+  background-color: #1A1A1A;
+  color: var(--blue);
+  transform: scale(1.08) rotate(5deg);
+}
+
+/* Footer */
 .footer {
-  background-color: #fff;
-  color: var(--black);
+  background: #fff;
   text-align: center;
   padding: 1.5rem 1rem;
   font-size: 0.95rem;
-  margin-top: 0;
   border-top: 1px solid #eee;
 }
 
-/* Make footer text smaller on small screens */
-@media (max-width: 600px) {
-  .footer {
-    font-size: 0.8rem;
-    padding: 1rem;
+/* Responsive */
+@media (max-width: 1024px) {
+  .text-box {
+    max-width: 320px;
+    padding: 1.5rem;
+    margin-right: 1.5vw;
+  }
+
+  .text-box h1 {
+    font-size: 1.5rem;
+  }
+
+  .text-box p {
+    font-size: 0.95rem;
   }
 }
 
-/* Add a smooth transition to all images for beginner students */
-/* This makes images gently animate when their size, opacity, or shadow changes */
-img {
-  transition: all 0.3s ease;
+@media (max-width: 768px) {
+  .story-wrapper,
+  .cta-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .story img,
+  .cta-img {
+    max-width: 90vw;
+  }
+
+  .cta-text {
+    text-align: center;
+  }
+
+  .cta-button {
+    font-size: 0.9rem;
+  }
+
+  .text-box {
+    max-width: 260px;
+    padding: 1.2rem;
+    margin-right: 1.5vw;
+  }
+
+  .text-box h1 {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .text-box p {
+    font-size: 0.85rem;
+  }
 }
 
-/* When you hover over any image, make it gently scale up and add a shadow,
-   but NOT for the hero image at the top */
-img:not(.hero-img):hover {
-  /* Make the image a little bigger and add a stronger shadow */
-  transform: scale(1.05);
-  box-shadow: 0 6px 24px 0 rgba(0,0,0,0.18);
+@media (max-width: 500px) {
+  .text-box {
+    max-width: 200px;
+    padding: 1rem;
+    margin-right: 1vw;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.9);
+  }
+
+  .text-box h1 {
+    font-size: 1rem;
+  }
+
+  .text-box p {
+    font-size: 0.75rem;
+  }
+
+  .cta-button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .footer {
+    font-size: 0.8rem;
+  }
 }
