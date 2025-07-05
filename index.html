@@ -4,11 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>charity: water</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- Link to CSS -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Hero Section -->
+  <!-- Hero Section with navbar, background image and CTA -->
   <header class="hero">
     <nav class="navbar">
       <img src="img/charitywater_logo.png" alt="charity: water logo" class="logo" />
@@ -30,7 +32,7 @@
     </div>
   </header>
 
-  <!-- Story Section -->
+  <!-- Story Section with image and info -->
   <section class="story">
     <div class="story-wrapper">
       <img src="img/story_image.jpg" alt="Story" />
@@ -46,7 +48,7 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- CTA Section to inspire student donations -->
   <section class="cta">
     <div class="cta-wrapper">
       <img src="img/water_project_image.jpg" alt="Students helping with water project" class="cta-img" />
@@ -64,12 +66,19 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer with contact and legal info -->
   <footer class="footer">
     <p>
       &copy; 2025 charity: water &mdash; 40 Worth Street, Suite 330, New York, NY 10013<br>
       charity: water is a 501(c)(3) nonprofit organization | EIN: 22-3936753
     </p>
   </footer>
+
+  <!-- Optional: Mobile Menu JS (if needed) -->
+  <script>
+    document.querySelector('.menu-icon').addEventListener('click', () => {
+      alert('Mobile menu toggle coming soon!');
+    });
+  </script>
 </body>
 </html>
