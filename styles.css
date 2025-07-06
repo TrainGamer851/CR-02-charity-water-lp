@@ -118,7 +118,7 @@ img:not(.hero-img):hover {
   .hero {
     flex-direction: column;
     max-height: none;
-    align-items:normal;
+    align-items: center;
   }
 
   .hero-content {
@@ -216,7 +216,7 @@ img:not(.hero-img):hover {
 
 .gallery-item {
   flex: 0 0 auto; /* Keep fixed width in horizontal scroll */
-  width: 475px;   /* Match image width */
+  width: 400px;   /* Match image width */
   text-align: center;
 }
 
@@ -236,8 +236,8 @@ img:not(.hero-img):hover {
 }
 
 .gallery-item img {
-  height: 317x;
-  width: 475px;
+  height: 300x;
+  width: 400px;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
