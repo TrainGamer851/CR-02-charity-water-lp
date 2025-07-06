@@ -84,7 +84,7 @@ img:not(.hero-img):hover {
   align-items: center;
   justify-content: flex-end;
   padding: 1rem;
-  width: 90%;
+  width: 100vw;
   pointer-events: none; /* Prevents accidental overlap behavior */
 }
 
@@ -118,12 +118,12 @@ img:not(.hero-img):hover {
   .hero {
     flex-direction: column;
     max-height: none;
-    align-items: center;
+    align-items:normal;
   }
 
   .hero-content {
     position: static;
-    width: 95.5%;
+    width: 100vw;
     justify-content: center;
     padding-top: 1rem;
   }
@@ -150,10 +150,9 @@ img:not(.hero-img):hover {
 
 @media (max-width: 400px) {
   .hero-content {
-    align-content: center;
     justify-content: center;
-    width: 200%;
-    max-width: 500px;
+    align-items: center;
+    width: 100vw;
   }
 
   .text-box {
